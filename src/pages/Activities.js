@@ -29,10 +29,6 @@ const Activities = props => {
         })
     }
 
-    // const onSelectedChange = (newSelected) => {
-    //     setSelected(newSelected)
-    //     fetchParkResults()
-    // }
 
     const displayActivities = () => {
         if (activities.length === 0) {
@@ -54,8 +50,8 @@ const Activities = props => {
         }
         else {
             let selectedString = "Parks with " + selected[0].label
-            for (let i = 1; i < selected.length; i++) {
-                selectedString += (" AND " + selected[i].label)
+            for (let index = 1; index < selected.length; index++) {
+                selectedString += (" AND " + selected[index].label)
             }
             return <h2>{selectedString}</h2>
         }
@@ -63,8 +59,8 @@ const Activities = props => {
 
     const makeParkQuery = (selected) => {
         let parkIds = selected[0].value
-        for (let i = 1; i < selected.length; i++) {
-            parkIds += ("," + selected[i].value)
+        for (let index = 1; index < selected.length; index++) {
+            parkIds += ("," + selected[index].value)
         }
         return baseUrl + "activities/parks?id=" + parkIds + "&" + keyUrl
     }

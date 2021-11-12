@@ -4,9 +4,7 @@ import Activities from './pages/Activities';
 import Header from './components/Header';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-
 import CssBaseline from '@mui/material/CssBaseline';
-
 
 // Use react-router library for nested routes
 import {
@@ -20,8 +18,12 @@ function App() {
     <div className="App">
       <Box sx={{ display: 'flex' }}>
         <Router>
+
+          {/* Wrapped every route with the persistent header and sidebar */}
           <Header/>
           <Sidebar/>
+
+          {/* Baseline styling from Material UI */}
           <CssBaseline/>
           <Box
         component="main"

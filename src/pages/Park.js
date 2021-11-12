@@ -2,11 +2,12 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Webcam from "../components/Webcam"
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
+import Map from "../components/Map"
 
 const Park = props => {
 
@@ -37,10 +38,6 @@ const Park = props => {
         </div>
     }
 
-    const displayWebcam = () => {
-        return <Webcam images={parkData.images}/>
-    }
-
     const handleComponentChange = (event) => {
         setComponent(event.target.value)
     }
@@ -49,11 +46,15 @@ const Park = props => {
         if (parkData == null) {
             return <h2>Loading</h2>
         }
+        // extract strings
         else if (current === "data") {
             return displayParkData()
         }
         else if (current === "webcam") {
-            return displayWebcam()
+            return <Webcam images={parkData.images}/>
+        }
+        else if (current === "map") {
+            return <Map latitude={parkData.latitude} longitude={parkData.longitude}/>
         }
     }
 
@@ -69,6 +70,7 @@ const Park = props => {
                 >
                     <FormControlLabel value="data" control={<Radio />} label="Park Info" />
                     <FormControlLabel value="webcam" control={<Radio />} label="Images" />
+                    <FormControlLabel value="map" control={<Radio />} label="Map" />
                 </RadioGroup>
             </FormControl>
 

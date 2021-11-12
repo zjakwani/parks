@@ -26,7 +26,9 @@ const Sidebar = props => {
                 variant="permanent"
                 anchor="left"
             >
-                <Toolbar />
+                <Toolbar>
+                    <h3>National Parks</h3>
+                </Toolbar>
                 <Divider />
                 <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
