@@ -102,7 +102,7 @@ const Activities = props => {
             return
         }
         else if (parkResults.length === 0) {
-            return <h3>No parks match the criteria</h3> 
+            return <h3>Oops! No parks match the criteria</h3> 
         }
         else {
             return parkResults.map(park => {

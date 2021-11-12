@@ -1,6 +1,12 @@
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+import Webcam from "../components/Webcam"
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 const Park = props => {
 
@@ -11,6 +17,7 @@ const Park = props => {
     const keyUrl = "api_key=" + key
 
     const [parkData, setParkData] = useState(null)
+    const [component, setComponent] = useState("data")
 
     const fetchParkData = () => {
         axios.get(baseUrl + "parks?parkCode=" + code + "&" + keyUrl)
@@ -24,19 +31,49 @@ const Park = props => {
     }, [])
 
     const displayParkData = () => {
+        return <div>
+            <h3>Description: {parkData.description}</h3>
+            <h3>latitude and longitude: {parkData.latLong}</h3>
+        </div>
+    }
+
+    const displayWebcam = () => {
+        return <Webcam images={parkData.images}/>
+    }
+
+    const handleComponentChange = (event) => {
+        setComponent(event.target.value)
+    }
+
+    const componentReducer = (current) => {
         if (parkData == null) {
             return <h2>Loading</h2>
         }
-        else {
-            return <div>
-                <h3>Description: {parkData.description}</h3>
-                <h3>latitude and longitude: {parkData.latLong}</h3>
-            </div>
+        else if (current === "data") {
+            return displayParkData()
+        }
+        else if (current === "webcam") {
+            return displayWebcam()
         }
     }
 
     return (
-        <div>{displayParkData()}</div>
+        <div>
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Display</FormLabel>
+                <RadioGroup
+                    aria-label="display"
+                    name="controlled-radio-buttons-group"
+                    value={component}
+                    onChange={handleComponentChange}
+                >
+                    <FormControlLabel value="data" control={<Radio />} label="Park Info" />
+                    <FormControlLabel value="webcam" control={<Radio />} label="Images" />
+                </RadioGroup>
+            </FormControl>
+
+            {componentReducer(component)}
+        </div>
     );
   };
   
