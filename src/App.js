@@ -1,4 +1,4 @@
-import Home from './pages/Home';
+import Park from './pages/Park';
 import Sidebar from './components/Sidebar';
 import Activities from './pages/Activities';
 import Header from './components/Header';
@@ -30,6 +30,7 @@ function App() {
         <Toolbar />
           <Routes>
             <Route path="/" element={<Activities/>}></Route>
+            <Route path="/:code" element={<Park/>}></Route>
           </Routes>
           </Box>
         </Router>

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Select from 'react-select'
+import Button from '@mui/material/Button'
 
 const Activities = props => {
 
@@ -72,7 +73,7 @@ const Activities = props => {
         if (selected.length === 0) {
             return
         }
-        
+
         const parkQuery = makeParkQuery(selected)
 
         axios.get(parkQuery)
@@ -98,14 +99,14 @@ const Activities = props => {
 
     const displayParkResults = () => {
         if (selected.length === 0) {
-            return <h3>pppp</h3>
+            return
         }
         else if (parkResults.length === 0) {
             return <h3>No parks match the criteria</h3> 
         }
         else {
             return parkResults.map(park => {
-                    return <h3>{park.fullName}</h3>
+                    return <Button variant="outlined" key={park.parkCode} href={"/" + park.parkCode}>{park.fullName}</Button>
             })
         }
     }
