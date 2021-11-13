@@ -1,20 +1,20 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Select from 'react-select'
-import Button from '@mui/material/Button'
+import SearchResults from "../components/SearchResults"
+import API_URLS from "../urls"
 
+// Page for activity based searching
 const Activities = props => {
 
-    const key = process.env.REACT_APP_API_KEY
-    const baseUrl = "https://developer.nps.gov/api/v1/"
-    const keyUrl = "api_key=" + key
-
+    // State hooks for activity list, currently selected activities, and results from API call
     const [activities, setActivities] = useState([])
     const [selected, setSelected] = useState([])
     const [parkResults, setParkResults] = useState([])
 
+    // Fetches list of activities from API
     const fetchActivities = () => {
-        axios.get(baseUrl + "activities" + "?" + keyUrl)
+        axios.get(API_URLS.ACTIVITIES)
         .then((response) => {
             setActivities(response.data.data.map(item => {
                 return ({
@@ -29,50 +29,15 @@ const Activities = props => {
         })
     }
 
-
-    const displayActivities = () => {
-        if (activities.length === 0) {
-            return <h2>loading</h2>
-        }
-        else {
-            return <Select
-                isMulti
-                options={activities}
-                //onChange={(newSelected) => onSelectedChange(newSelected)}
-                onChange={setSelected}
-            />
-        }
-    }
-
-    const displaySelected = () => {
-        if (selected.length === 0) {
-            return <h2>Nothing selected</h2>
-        }
-        else {
-            let selectedString = "Parks with " + selected[0].label
-            for (let index = 1; index < selected.length; index++) {
-                selectedString += (" AND " + selected[index].label)
-            }
-            return <h2>{selectedString}</h2>
-        }
-    }
-
-    const makeParkQuery = (selected) => {
-        let parkIds = selected[0].value
-        for (let index = 1; index < selected.length; index++) {
-            parkIds += ("," + selected[index].value)
-        }
-        return baseUrl + "activities/parks?id=" + parkIds + "&" + keyUrl
-    }
-
+    // Fetches park results corresponding with selected activities
     const fetchParkResults = () => {
         if (selected.length === 0) {
             return
         }
 
-        const parkQuery = makeParkQuery(selected)
-
-        axios.get(parkQuery)
+        // Filters parks with AND logic
+        // Only returns parks that have every selected activity 
+        axios.get(API_URLS.PARKS_BY_ACTIVITIES(selected))
         .then((response) => {
             let uniqueParks = response.data.data[0].parks
             if (selected.length > 1) {
@@ -93,6 +58,16 @@ const Activities = props => {
         })
     }
 
+    // Util function to concatenate Current Activities for display
+    const getSelectedString = () => {
+        let selectedString = "Parks with " + selected[0].label
+        for (let index = 1; index < selected.length; index++) {
+            selectedString += (" AND " + selected[index].label)
+        }
+        return <h2>{selectedString}</h2>
+    }
+
+    // Util function to handle rendering of park results
     const displayParkResults = () => {
         if (selected.length === 0) {
             return
@@ -101,9 +76,7 @@ const Activities = props => {
             return <h3>Oops! No parks match the criteria</h3> 
         }
         else {
-            return parkResults.map(park => {
-                    return <Button variant="outlined" key={park.parkCode} href={"/" + park.parkCode}>{park.fullName}</Button>
-            })
+            return <SearchResults parkList={parkResults} />
         }
     }
 
@@ -112,14 +85,25 @@ const Activities = props => {
         fetchActivities()
     }, [])
 
+    // Calls the park fetch every time the selected activities change
     useEffect(() => {
         fetchParkResults()
     }, [selected])
 
     return (
         <div>
-            {displayActivities()}
-            {displaySelected()}
+            {/* {displayActivities()} */}
+            { activities.length ? 
+                <Select isMulti options={activities} onChange={setSelected}/> 
+                : 
+                <h2>Loading Activities</h2>
+            }
+            { selected.length ?
+                <h2>{getSelectedString()}</h2> 
+                :
+                <h2>Nothing selected</h2>
+            }
+
             <div>{displayParkResults()}</div>
         </div>
     );

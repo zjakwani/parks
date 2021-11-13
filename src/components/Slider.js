@@ -1,7 +1,10 @@
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css"
 
-const Webcam = props => {
+// Shows images in a gallery format using React Awesome Slider component 
+const Slider = props => {
+
+    // Maps image array from props to individual images
     return ( 
         <AwesomeSlider>
             {props.images.map((image) => {
@@ -11,4 +14,4 @@ const Webcam = props => {
     );
 };
   
-export default Webcam;
+export default Slider;
