@@ -14,7 +14,7 @@ const Header = props => {
             >
                 <Toolbar>
                 <Typography variant="h6" noWrap component="div">
-                    Parks
+                    {props.title}
                 </Typography>
                 </Toolbar>
             </AppBar>

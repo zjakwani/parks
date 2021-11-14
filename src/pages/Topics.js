@@ -7,49 +7,14 @@ import Header from "../components/Header"
 import { mergeParks } from "../util"
 import { getMultipleSelectedString } from "../util"
 
-// Page for activity based searching
-const Activities = props => {
 
-    // State hooks for activity list, currently selected activities, and results from API call
-    const [activities, setActivities] = useState([])
+// Page for topic based searching
+const Topics = props => {
+
+    // State hooks for topic list, currently selected topics, and results from API call
+    const [topics, setTopics] = useState([])
     const [selected, setSelected] = useState([])
     const [parkResults, setParkResults] = useState([])
-
-    // Fetches list of activities from API
-    const fetchActivities = () => {
-        axios.get(API_URLS.ACTIVITIES)
-        .then((response) => {
-            setActivities(response.data.data.map(item => {
-                return ({
-                    value: item.id,
-                    label: item.name,
-                })
-            }))
-        })
-        // logs any errors to console
-        .catch((error) => {
-            console.log("Error: " + error)
-        })
-    }
-
-    // Fetches park results corresponding with selected activities
-    const fetchParkResults = () => {
-        if (selected.length === 0) {
-            return
-        }
-
-        // Filters parks with AND logic
-        // Only returns parks that have every selected activity 
-        axios.get(API_URLS.PARKS_BY_ACTIVITIES(selected))
-        .then((response) => {
-            const isSelectedMultiple = selected.length > 1
-            setParkResults(mergeParks(response.data.data, isSelectedMultiple))
-        })
-        // logs any errors to console
-        .catch((error) => {
-            console.log("Error: " + error)
-        })
-    }
 
     // Util function to handle rendering of park results
     const displayParkResults = () => {
@@ -64,23 +29,59 @@ const Activities = props => {
         }
     }
 
+    // Fetches list of topics from API
+    const fetchTopics = () => {
+        axios.get(API_URLS.TOPICS)
+        .then((response) => {
+            setTopics(response.data.data.map(item => {
+                return ({
+                    value: item.id,
+                    label: item.name,
+                })
+            }))
+        })
+        // logs any errors to console
+        .catch((error) => {
+            console.log("Error: " + error)
+        })
+    }
+
+    // Fetches park results corresponding with selected topics
+    const fetchParkResults = () => {
+        if (selected.length === 0) {
+            return
+        }
+
+        // Filters parks with AND logic
+        // Only returns parks that have every selected topic 
+        axios.get(API_URLS.PARKS_BY_TOPICS(selected))
+        .then((response) => {
+            const isSelectedMultiple = selected.length > 1
+            setParkResults(mergeParks(response.data.data, isSelectedMultiple))
+        })
+        // logs any errors to console
+        .catch((error) => {
+            console.log("Error: " + error)
+        })
+    }
+
     // triggers once on page load
     useEffect(() => {
-        fetchActivities()
+        fetchTopics()
     }, [])
 
-    // Calls the park fetch every time the selected activities change
+    // Calls the park fetch every time the selected topics change
     useEffect(() => {
         fetchParkResults()
     }, [selected])
 
     return (
         <div>
-            <Header title={"Search by Activities"}/>
-            { activities.length ? 
-                <Select isMulti options={activities} onChange={setSelected}/> 
+            <Header title={"Search by Topic"}/>
+            { topics.length ? 
+                <Select isMulti options={topics} onChange={setSelected}/> 
                 : 
-                <h2>Loading Activities</h2>
+                <h2>Loading Topics</h2>
             }
             { selected.length ?
                 <h2>{getMultipleSelectedString(selected)}</h2>
@@ -93,4 +94,4 @@ const Activities = props => {
     );
   };
   
-export default Activities;
+export default Topics;

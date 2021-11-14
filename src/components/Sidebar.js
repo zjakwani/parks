@@ -31,14 +31,24 @@ const Sidebar = props => {
                 </Toolbar>
                 <Divider />
                 <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                    <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItem button component="a" href="/">
+                        <ListItemText primary={"Home"} />
                     </ListItem>
-                ))}
+                </List>
+                <Divider />
+                <List>
+                    <ListItem button component="a" href="/activities">
+                        <ListItemText primary={"Search by Activities"} />
+                    </ListItem>
+                    <ListItem button component="a" href="/states">
+                        <ListItemText primary={"Search by States"} />
+                    </ListItem>
+                    <ListItem button component="a" href="/topics">
+                        <ListItemText primary={"Search by Topic"} />
+                    </ListItem>
+                    <ListItem button component="a" href="/keyword">
+                        <ListItemText primary={"Search by Keyword"} />
+                    </ListItem>
                 </List>
                 <Divider />
                 <List>

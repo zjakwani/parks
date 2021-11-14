@@ -1,10 +1,13 @@
 import Park from './pages/Park';
+import Home from './pages/Home';
 import Sidebar from './components/Sidebar';
 import Activities from './pages/Activities';
-import Header from './components/Header';
+import States from './pages/States';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import CssBaseline from '@mui/material/CssBaseline';
+import Topics from './pages/Topics';
+import Keyword from './pages/Keyword';
 
 // Use react-router library for nested routes
 import {
@@ -19,8 +22,8 @@ function App() {
       <Box sx={{ display: 'flex' }}>
         <Router>
 
-          {/* Wrapped every route with the persistent header and sidebar */}
-          <Header/>
+          {/* Wrapped every page with the persistent header and sidebar */}
+          {/* <Header/> */}
           <Sidebar/>
 
           {/* Baseline styling from Material UI */}
@@ -31,7 +34,11 @@ function App() {
       >
         <Toolbar />
           <Routes>
-            <Route path="/" element={<Activities/>}></Route>
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/activities" element={<Activities/>}></Route>
+            <Route path="/topics" element={<Topics/>}></Route>
+            <Route path="/states" element={<States/>}></Route>
+            <Route path="/keyword" element={<Keyword/>}></Route>
             <Route path="/:code" element={<Park/>}></Route>
           </Routes>
           </Box>
