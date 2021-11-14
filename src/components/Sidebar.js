@@ -5,7 +5,6 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 
 const drawerWidth = '20vw';
@@ -26,7 +25,7 @@ const Sidebar = props => {
                 anchor="left"
             >
                 <Toolbar>
-                    <h3>National Parks</h3>
+                    <h3>Explore National Parks</h3>
                 </Toolbar>
                 <Divider />
                 <List>
