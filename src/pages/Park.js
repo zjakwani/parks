@@ -12,6 +12,8 @@ import ParkInfo from "../components/ParkInfo"
 import API_URLS from "../urls"
 import Header from "../components/Header"
 import Webcam from "../components/Webcam"
+import Articles from "../components/Articles"
+import Grid from "@mui/material/Grid"
 
 // General component for park details, renders info based on Park Code
 const Park = props => {
@@ -21,13 +23,15 @@ const Park = props => {
         INFO: "Park Information",
         MAP: "Map",
         IMAGES: "Gallery",
-        WEBCAM: "Webcam",
+        WEBCAM: "Webcams",
+        ARTICLES: "Related Articles"
     }
 
     // State hooks for park information and current component being displayed, and webcams if any
     const [parkData, setParkData] = useState(null)
     const [component, setComponent] = useState(ComponentList.INFO)
     const [webcams, setWebcams] = useState([])
+    const [articles, setArticles] = useState([])
 
     // Gets park code from the Router parameters to display corresponding data
     const { code } = useParams();
@@ -48,10 +52,19 @@ const Park = props => {
         })
     }
 
+    // Sets current articles in the state to results from API get request
+    const fetchArticles = () => {
+        axios.get(API_URLS.ARTICLES(code))
+        .then((response) => {
+            setArticles(response.data.data)
+        })
+    }
+
     // Fetches park data once on page load
     useEffect(() => {
         fetchParkData()
         fetchWebcams()
+        fetchArticles()
     }, [])
 
     // Decides what to display based on what button is currently selected
@@ -76,8 +89,20 @@ const Park = props => {
             }
             else {
                 return (webcams.map((webcam, index) => {
-                    return <Webcam data={webcam} index={index}/>
+                    return <Webcam data={webcam} index={index + 1}/>
                 }))
+            }
+        }
+        else if (current === ComponentList.ARTICLES) {
+            if (articles.length === 0) {
+                return <h2>Sorry, no articles were found. Try a Google search!</h2>
+            }
+            else {
+                return <Grid container spacing={5}>
+                            {(articles.map((article, index) => {
+                                return <Articles data={article} index={index + 1}/>
+                            }))}
+                        </Grid>
             }
         }
     }
@@ -85,7 +110,7 @@ const Park = props => {
     return (
         <div>
             <Header title={parkData == null ? "" : parkData.fullName}/>
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" style={{marginBottom:'2vh'}}>
                 <FormLabel component="legend">Display</FormLabel>
 
                 {/* onchange property of buttons sets the current component in state */}

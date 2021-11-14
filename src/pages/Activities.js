@@ -6,6 +6,7 @@ import API_URLS from "../urls"
 import Header from "../components/Header"
 import { mergeParks } from "../util"
 import { getMultipleSelectedString } from "../util"
+import picture from '../images/mountains.jpg'
 
 // Page for activity based searching
 const Activities = props => {
@@ -77,6 +78,7 @@ const Activities = props => {
     return (
         <div>
             <Header title={"Search by Activities"}/>
+            <img src={picture} alt="Image of beautiful lake" style={{height: '25vh', width:"76vw", marginBottom:"2vh"}}/>
             { activities.length ? 
                 <Select isMulti options={activities} onChange={setSelected}/> 
                 : 
@@ -85,7 +87,7 @@ const Activities = props => {
             { selected.length ?
                 <h2>{getMultipleSelectedString(selected)}</h2>
                 :
-                <h2>Nothing selected</h2>
+                <h2>See parks that have the selected activities!</h2>
             }
 
             <div>{displayParkResults()}</div>

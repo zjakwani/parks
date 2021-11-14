@@ -21,7 +21,7 @@ const Map = (props) => {
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        style={{ height: '100vh', width: '100wh' }}
+        style={{ height: '80vh', width: '80wh' }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributorsz'
@@ -29,7 +29,7 @@ const Map = (props) => {
         />
         <Marker position={position}>
             <Tooltip>
-                Location
+                {"Latitude: " + props.latitude + ", Longitude: " + props.longitude}
             </Tooltip>
         </Marker>
       </MapContainer>

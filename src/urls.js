@@ -43,5 +43,8 @@ export default {
     PARKS_BY_STATE: (stateCode) => baseUrl + "parks?stateCode=" + stateCode + "&" + keyUrl,
 
     // Endpoint to get webcams for a given park
-    WEBCAM: (parkCode) => baseUrl + "/webcams?parkCode=" + parkCode + "&" + keyUrl
+    WEBCAM: (parkCode) => baseUrl + "webcams?parkCode=" + parkCode + "&" + keyUrl,
+
+    // Endpoint to get related articles for a park
+    ARTICLES: (parkCode) => baseUrl + "articles?parkCode=" + parkCode + "&limit=10&" + keyUrl,
 }

@@ -56,7 +56,7 @@ const States = props => {
             { (selected != null) ?
                 <h2>{"Parks in " + selected.label}</h2> 
                 :
-                <h2>Nothing selected</h2>
+                <h2>See all national parks within a US state!</h2>
             }
 
             <div>{displayParkResults()}</div>

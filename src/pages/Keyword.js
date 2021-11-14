@@ -52,11 +52,12 @@ const Keyword = props => {
 
     return (
         <div>
-            <Header title={"Search by State"}/>
+            <Header title={"Search by Keyword"}/>
             <TextField
                 label="Keyword"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                style = {{width: '75vw'}}
             />
             <Button
                 variant="contained"
@@ -68,7 +69,7 @@ const Keyword = props => {
             { (searched !== "") ?
                 <h2>{'Parks related to "' + searched + '"'}</h2> 
                 :
-                <h2>Enter a search term</h2>
+                <h2>Enter a search term!</h2>
             }
 
             <div>{displayParkResults()}</div>

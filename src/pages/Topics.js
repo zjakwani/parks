@@ -86,7 +86,7 @@ const Topics = props => {
             { selected.length ?
                 <h2>{getMultipleSelectedString(selected)}</h2>
                 :
-                <h2>Nothing selected</h2>
+                <h2>See parks related to the selected topics!</h2>
             }
 
             <div>{displayParkResults()}</div>

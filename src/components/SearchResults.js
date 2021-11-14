@@ -1,22 +1,25 @@
 import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
 
 // Component for displaying parks that match the according search filters
 const SearchResults = props => {
 
     // Maps park list to buttons with links to the corresponding park specific page
     return ( 
-        <div>
+        <Grid container spacing={2}>
             {props.parkList.map((park) => {
 
-                return <Button 
-                            key={park.parkCode}
-                            href={"/" + park.parkCode}
-                            variant="contained"
-                        >
-                            {park.fullName}
-                        </Button>
+                return <Grid item>
+                            <Button 
+                                key={park.parkCode}
+                                href={"/" + park.parkCode}
+                                variant="contained"
+                            >
+                                {park.fullName}
+                            </Button>
+                        </Grid>
             })}
-        </div>
+        </Grid>
     );
 };
   
