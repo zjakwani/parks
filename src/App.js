@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
         <Box sx={{ display: 'flex' }}>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
 
             {/* Wrapped every page with the persistent header and sidebar */}
             {/* <Header/> */}
