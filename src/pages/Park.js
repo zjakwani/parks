@@ -10,6 +10,7 @@ import Map from "../components/Map"
 import Slider from "../components/Slider"
 import ParkInfo from "../components/ParkInfo"
 import API_URLS from "../urls"
+import Header from "../components/Header"
 
 // General component for park details, renders info based on Park Code
 const Park = props => {
@@ -61,6 +62,7 @@ const Park = props => {
 
     return (
         <div>
+            <Header title={parkData == null ? "" : parkData.fullName}/>
             <FormControl component="fieldset">
                 <FormLabel component="legend">Display</FormLabel>
 
