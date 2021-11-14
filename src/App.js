@@ -12,7 +12,7 @@ import About from './pages/About';
 // Use react-router library for nested routes
 import {
   Routes,
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
 
