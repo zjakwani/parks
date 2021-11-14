@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Topics from './pages/Topics';
 import Keyword from './pages/Keyword';
+import About from './pages/About';
 
 // Use react-router library for nested routes
 import {
@@ -36,7 +37,8 @@ function App() {
               <Route path="/topics" element={<Topics/>}></Route>
               <Route path="/states" element={<States/>}></Route>
               <Route path="/keyword" element={<Keyword/>}></Route>
-              <Route path="/:code" element={<Park/>}></Route>
+              <Route path="/about" element={<About/>}></Route>
+              <Route path="/park/:code" element={<Park/>}></Route>
             </Routes>
             </Box>
           </Router>

@@ -21,7 +21,7 @@ const ParkInfo = props => {
             <Grid item sx={{width: '32vw'}}>
                 <Card variant="outlined">
                     <Box padding={2}>
-                        <h3>Contact</h3>
+                        <h3>General Information</h3>
                         <Divider/>
                         {props.data.contacts.emailAddresses.map((address) => {
                             return <p>{address.emailAddress}</p>
@@ -75,6 +75,10 @@ const ParkInfo = props => {
                         })}
                     </Box>
                 </Card>
+            </Grid>
+
+            <Grid item>
+                <Button variant="contained" target="_blank" href={props.data.url}>Visit Park Website</Button>
             </Grid>
         </Grid>
     );

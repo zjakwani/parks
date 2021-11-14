@@ -12,7 +12,7 @@ const SearchResults = props => {
                 return <Grid item>
                             <Button 
                                 key={park.parkCode}
-                                href={"/" + park.parkCode}
+                                href={"/park/" + park.parkCode}
                                 variant="contained"
                             >
                                 {park.fullName}

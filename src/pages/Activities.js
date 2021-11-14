@@ -78,7 +78,9 @@ const Activities = props => {
     return (
         <div>
             <Header title={"Search by Activities"}/>
-            <img src={picture} alt="Image of beautiful lake" style={{height: '25vh', width:"76vw", marginBottom:"2vh"}}/>
+            <div style={{marginBottom: "2vh"}}>
+                <img src={picture} alt="Image of beautiful lake" style={{height: '100%', width:"100%"}}/>
+            </div>
             { activities.length ? 
                 <Select isMulti options={activities} onChange={setSelected}/> 
                 : 

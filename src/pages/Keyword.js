@@ -57,7 +57,7 @@ const Keyword = props => {
                 label="Keyword"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                style = {{width: '75vw'}}
+                style = {{width: '75vw', marginBottom: '4vh'}}
             />
             <Button
                 variant="contained"
