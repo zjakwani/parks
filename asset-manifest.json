@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/parks/static/js/main.7d236243.chunk.js",
+    "main.js.map": "/parks/static/js/main.7d236243.chunk.js.map",
+    "runtime-main.js": "/parks/static/js/runtime-main.aad7f121.js",
+    "runtime-main.js.map": "/parks/static/js/runtime-main.aad7f121.js.map",
+    "static/css/2.2c30fbcf.chunk.css": "/parks/static/css/2.2c30fbcf.chunk.css",
+    "static/js/2.df92bce0.chunk.js": "/parks/static/js/2.df92bce0.chunk.js",
+    "static/js/2.df92bce0.chunk.js.map": "/parks/static/js/2.df92bce0.chunk.js.map",
+    "static/js/3.e49711b9.chunk.js": "/parks/static/js/3.e49711b9.chunk.js",
+    "static/js/3.e49711b9.chunk.js.map": "/parks/static/js/3.e49711b9.chunk.js.map",
+    "index.html": "/parks/index.html",
+    "static/css/2.2c30fbcf.chunk.css.map": "/parks/static/css/2.2c30fbcf.chunk.css.map",
+    "static/js/2.df92bce0.chunk.js.LICENSE.txt": "/parks/static/js/2.df92bce0.chunk.js.LICENSE.txt",
+    "static/media/hill.5661fada.jpg": "/parks/static/media/hill.5661fada.jpg",
+    "static/media/mountains.a9c01534.jpg": "/parks/static/media/mountains.a9c01534.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aad7f121.js",
+    "static/css/2.2c30fbcf.chunk.css",
+    "static/js/2.df92bce0.chunk.js",
+    "static/js/main.7d236243.chunk.js"
+  ]
+}
