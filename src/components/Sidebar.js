@@ -36,7 +36,7 @@ const Sidebar = props => {
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button component="a" href="/activities">
+                    <ListItem button component="a" href="/#/activities">
                         <ListItemText primary={"Search by Activities"} />
                     </ListItem>
                     <ListItem button component="a" href="/states">

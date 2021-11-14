@@ -12,7 +12,7 @@ import About from './pages/About';
 // Use react-router library for nested routes
 import {
   Routes,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
 } from 'react-router-dom';
 
@@ -32,13 +32,13 @@ function App() {
         >
           <Toolbar />
             <Routes>
-              <Route path="/" element={<Home/>}></Route>
-              <Route path="/activities" element={<Activities/>}></Route>
-              <Route path="/topics" element={<Topics/>}></Route>
-              <Route path="/states" element={<States/>}></Route>
-              <Route path="/keyword" element={<Keyword/>}></Route>
-              <Route path="/about" element={<About/>}></Route>
-              <Route path="/park/:code" element={<Park/>}></Route>
+              <Route path="" element={<Home/>}/>
+              <Route path="/activities" element={<Activities/>}/>
+              <Route path="/topics" element={<Topics/>}/>
+              <Route path="/states" element={<States/>}/>
+              <Route path="/keyword" element={<Keyword/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/park/:code" element={<Park/>}/>
             </Routes>
             </Box>
           </Router>
