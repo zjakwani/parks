@@ -5,7 +5,6 @@ import Activities from './pages/Activities';
 import States from './pages/States';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Topics from './pages/Topics';
 import Keyword from './pages/Keyword';
 
@@ -19,31 +18,29 @@ import {
 function App() {
   return (
     <div className="App">
-      <Box sx={{ display: 'flex' }}>
-        <Router>
+        <Box sx={{ display: 'flex' }}>
+          <Router>
 
-          {/* Wrapped every page with the persistent header and sidebar */}
-          {/* <Header/> */}
-          <Sidebar/>
+            {/* Wrapped every page with the persistent header and sidebar */}
+            {/* <Header/> */}
+            <Sidebar/>
 
-          {/* Baseline styling from Material UI */}
-          <CssBaseline/>
-          <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
-          <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="/activities" element={<Activities/>}></Route>
-            <Route path="/topics" element={<Topics/>}></Route>
-            <Route path="/states" element={<States/>}></Route>
-            <Route path="/keyword" element={<Keyword/>}></Route>
-            <Route path="/:code" element={<Park/>}></Route>
-          </Routes>
-          </Box>
-        </Router>
-      </Box>
+            <Box
+          component="main"
+          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        >
+          <Toolbar />
+            <Routes>
+              <Route path="/" element={<Home/>}></Route>
+              <Route path="/activities" element={<Activities/>}></Route>
+              <Route path="/topics" element={<Topics/>}></Route>
+              <Route path="/states" element={<States/>}></Route>
+              <Route path="/keyword" element={<Keyword/>}></Route>
+              <Route path="/:code" element={<Park/>}></Route>
+            </Routes>
+            </Box>
+          </Router>
+        </Box>
     </div>
   );
 }

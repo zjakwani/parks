@@ -41,4 +41,7 @@ export default {
 
     // Endpoint to return parks in a state, by 2 letter state abbreviation
     PARKS_BY_STATE: (stateCode) => baseUrl + "parks?stateCode=" + stateCode + "&" + keyUrl,
+
+    // Endpoint to get webcams for a given park
+    WEBCAM: (parkCode) => baseUrl + "/webcams?parkCode=" + parkCode + "&" + keyUrl
 }

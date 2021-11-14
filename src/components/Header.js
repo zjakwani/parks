@@ -10,7 +10,10 @@ const Header = props => {
         <div>
             <AppBar
                 position="fixed"
-                sx={{ width: `calc(100vw - ${drawerWidth})`, ml: `${drawerWidth}` }}
+                sx={{ 
+                        width: `calc(100vw - ${drawerWidth})`,
+                        ml: `${drawerWidth}`,
+                    }}
             >
                 <Toolbar>
                 <Typography variant="h6" noWrap component="div">

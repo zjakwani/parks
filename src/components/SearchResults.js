@@ -9,9 +9,9 @@ const SearchResults = props => {
             {props.parkList.map((park) => {
 
                 return <Button 
-                            variant="outlined" 
                             key={park.parkCode}
                             href={"/" + park.parkCode}
+                            variant="contained"
                         >
                             {park.fullName}
                         </Button>

@@ -11,6 +11,7 @@ import Slider from "../components/Slider"
 import ParkInfo from "../components/ParkInfo"
 import API_URLS from "../urls"
 import Header from "../components/Header"
+import Webcam from "../components/Webcam"
 
 // General component for park details, renders info based on Park Code
 const Park = props => {
@@ -18,13 +19,15 @@ const Park = props => {
     // Enum for names of the components being displayed one at a time
     const ComponentList = {
         INFO: "Park Information",
-        IMAGES: "Gallery",
         MAP: "Map",
+        IMAGES: "Gallery",
+        WEBCAM: "Webcam",
     }
 
-    // State hooks for park information and current component being displayed
+    // State hooks for park information and current component being displayed, and webcams if any
     const [parkData, setParkData] = useState(null)
     const [component, setComponent] = useState(ComponentList.INFO)
+    const [webcams, setWebcams] = useState([])
 
     // Gets park code from the Router parameters to display corresponding data
     const { code } = useParams();
@@ -37,9 +40,18 @@ const Park = props => {
         })
     }
 
+    // Sets current webcams in the state to results from API get request
+    const fetchWebcams = () => {
+        axios.get(API_URLS.WEBCAM(code))
+        .then((response) => {
+            setWebcams(response.data.data)
+        })
+    }
+
     // Fetches park data once on page load
     useEffect(() => {
         fetchParkData()
+        fetchWebcams()
     }, [])
 
     // Decides what to display based on what button is currently selected
@@ -57,6 +69,16 @@ const Park = props => {
         }
         else if (current === ComponentList.MAP) {
             return <Map latitude={parkData.latitude} longitude={parkData.longitude}/>
+        }
+        else if (current === ComponentList.WEBCAM) {
+            if (webcams.length === 0) {
+                return <h2>Sorry, no webcams were found. Check out the Gallery instead!</h2>
+            }
+            else {
+                return (webcams.map((webcam, index) => {
+                    return <Webcam data={webcam} index={index}/>
+                }))
+            }
         }
     }
 

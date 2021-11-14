@@ -1,10 +1,8 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import Select from 'react-select'
 import SearchResults from "../components/SearchResults"
 import API_URLS from "../urls"
 import Header from "../components/Header"
-import { stateList } from "../util"
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 
@@ -12,7 +10,7 @@ import TextField from "@mui/material/TextField"
 // Page for keyword based searching
 const Keyword = props => {
 
-    // State hooks for activity list, currently selected activities, and results from API call
+    // State hooks for dynamically changing user input, submitted user input, and api call results
     const [input, setInput] = useState("")
     const [searched, setSearched] = useState("")
     const [parkResults, setParkResults] = useState([])
@@ -23,7 +21,7 @@ const Keyword = props => {
             return
         }
 
-        // Filters parks by state
+        // Filters parks by keyword
         axios.get(API_URLS.PARKS_BY_KEYWORD(searched))
         .then((response) => {
             setParkResults(response.data.data)

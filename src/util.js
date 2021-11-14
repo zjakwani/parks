@@ -23,7 +23,6 @@ export const getMultipleSelectedString = (selected) => {
     return selectedString
 }
 
-
 // List of American states with both abbreviation and full name
 export const stateList = 
 [
@@ -66,10 +65,6 @@ export const stateList =
     {
         label: "District Of Columbia",
         value: "DC"
-    },
-    {
-        label: "Federated States Of Micronesia",
-        value: "FM"
     },
     {
         label: "Florida",
@@ -118,10 +113,6 @@ export const stateList =
     {
         label: "Maine",
         value: "ME"
-    },
-    {
-        label: "Marshall Islands",
-        value: "MH"
     },
     {
         label: "Maryland",
@@ -200,10 +191,6 @@ export const stateList =
         value: "OR"
     },
     {
-        label: "Palau",
-        value: "PW"
-    },
-    {
         label: "Pennsylvania",
         value: "PA"
     },
@@ -264,3 +251,10 @@ export const stateList =
         value: "WY"
     }
 ]
+
+// export const Colors = {
+//     green: "#c5d5c5",
+//     gray: "#9fa9a3",
+//     beige: "e3e0cc",
+//     white: "f0f0f0",
+// }
