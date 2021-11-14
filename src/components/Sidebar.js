@@ -6,6 +6,8 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
+import { Link as RouterLink } from "react-router-dom";
+
 
 
 const drawerWidth = '20vw';
@@ -30,29 +32,29 @@ const Sidebar = props => {
                 </Toolbar>
                 <Divider />
                 <List>
-                    <ListItem button component="a" href="/">
+                    <ListItem button component={RouterLink} to="/">
                         <ListItemText primary={"Home"} />
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-                    <ListItem button component="a" href="/#/activities">
+                    <ListItem button component={RouterLink} to="/activities">
                         <ListItemText primary={"Search by Activities"} />
                     </ListItem>
-                    <ListItem button component="a" href="/states">
+                    <ListItem button component={RouterLink} to="/states">
                         <ListItemText primary={"Search by States"} />
                     </ListItem>
-                    <ListItem button component="a" href="/topics">
+                    <ListItem button component={RouterLink} to="/topics">
                         <ListItemText primary={"Search by Topic"} />
                     </ListItem>
-                    <ListItem button component="a" href="/keyword">
+                    <ListItem button component={RouterLink} to="/keyword">
                         <ListItemText primary={"Search by Keyword"} />
                     </ListItem>
                 </List>
                 <Divider />
                 <Stack style={{height:'100%'}} justifyContent="flex-end" alignItems="center">
                 <List>
-                    <ListItem button component="a" href="/about">
+                    <ListItem button component={RouterLink} to="/about">
                         <ListItemText primary={"About"} />
                     </ListItem>
                 </List>

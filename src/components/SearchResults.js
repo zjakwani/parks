@@ -1,5 +1,7 @@
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
+import { Link as RouterLink } from "react-router-dom"
+
 
 // Component for displaying parks that match the according search filters
 const SearchResults = props => {
@@ -12,7 +14,8 @@ const SearchResults = props => {
                 return <Grid item>
                             <Button 
                                 key={park.parkCode}
-                                href={"/park/" + park.parkCode}
+                                to={"/park/" + park.parkCode}
+                                component={RouterLink}
                                 variant="contained"
                             >
                                 {park.fullName}
