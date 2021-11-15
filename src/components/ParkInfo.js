@@ -1,4 +1,4 @@
-import Stack from '@mui/material/Stack'
+import Slide from '@mui/material/Slide'
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
@@ -8,8 +8,8 @@ import Divider from '@mui/material/Divider'
 
 const ParkInfo = props => {
     return ( 
+        <Slide in={true} direction="up" timeout={10000}>
         <Grid container spacing={5}>
-
             <Grid item>
                 <Card variant="outlined">
                     <Box padding={2}>
@@ -81,6 +81,7 @@ const ParkInfo = props => {
                 <Button variant="contained" target="_blank" href={props.data.url}>Visit Park Website</Button>
             </Grid>
         </Grid>
+        </Slide>
     );
 };
   

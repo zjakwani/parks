@@ -1,18 +1,16 @@
-import Paper from "@mui/material/Paper"
-import Box from "@mui/material/Box"
-import Grid from "@mui/material/Grid"
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Grid from "@mui/material/Grid";
+import Zoom from '@mui/material/Zoom';
 
-// Component for displaying metadata about park webcams, and mapping images if any
+// Component for displaying park articles info in cards
 const Articles = props => {
     return (
 
-
+            <Zoom in={true} timeout={props.index % 2 === 0 ? 5000 : 10000}>
             <Grid item>
                 <Card sx={{ maxWidth: '17vw' }}>
                     <CardMedia
@@ -30,6 +28,7 @@ const Articles = props => {
                     </CardActions>
                 </Card>
             </Grid>
+            </Zoom>
     )
 }
 

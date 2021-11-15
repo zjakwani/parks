@@ -6,6 +6,7 @@ import API_URLS from "../urls"
 import Header from "../components/Header"
 import { mergeParks } from "../util"
 import { getMultipleSelectedString } from "../util"
+import picture from "../images/rock.jpg"
 
 
 // Page for topic based searching
@@ -78,6 +79,9 @@ const Topics = props => {
     return (
         <div>
             <Header title={"Search by Topic"}/>
+            <div style={{marginBottom: "2vh"}}>
+                <img src={picture} alt="Image of big rock" style={{height: '100%', width:"100%"}}/>
+            </div>
             { topics.length ? 
                 <Select isMulti options={topics} onChange={setSelected}/> 
                 : 

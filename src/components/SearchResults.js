@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
+import Grow from "@mui/material/Grow"
 import { Link as RouterLink } from "react-router-dom"
 
 
@@ -11,16 +12,18 @@ const SearchResults = props => {
         <Grid container spacing={2}>
             {props.parkList.map((park) => {
 
-                return <Grid item>
-                            <Button 
-                                key={park.parkCode}
-                                to={"/park/" + park.parkCode}
-                                component={RouterLink}
-                                variant="contained"
-                            >
-                                {park.fullName}
-                            </Button>
-                        </Grid>
+                return  <Grow in={true} timeout={2000}>
+                            <Grid item>
+                                <Button 
+                                    key={park.parkCode}
+                                    to={"/park/" + park.parkCode}
+                                    component={RouterLink}
+                                    variant="contained"
+                                >
+                                    {park.fullName}
+                                </Button>
+                            </Grid>
+                        </Grow>
             })}
         </Grid>
     );

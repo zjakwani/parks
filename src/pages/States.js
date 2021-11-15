@@ -5,6 +5,7 @@ import SearchResults from "../components/SearchResults"
 import API_URLS from "../urls"
 import Header from "../components/Header"
 import { stateList } from "../util"
+import picture from "../images/canyon.jpg"
 
 // Page for state based searching
 const States = props => {
@@ -51,6 +52,9 @@ const States = props => {
     return (
         <div>
             <Header title={"Search by State"}/>
+            <div style={{marginBottom: "2vh"}}>
+                <img src={picture} alt="Image of canyon" style={{height: '100%', width:"100%"}}/>
+            </div>
             <Select options={stateList} onChange={setSelected}/> 
 
             { (selected != null) ?

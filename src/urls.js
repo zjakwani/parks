@@ -46,5 +46,5 @@ export default {
     WEBCAM: (parkCode) => baseUrl + "webcams?parkCode=" + parkCode + "&" + keyUrl,
 
     // Endpoint to get related articles for a park
-    ARTICLES: (parkCode) => baseUrl + "articles?parkCode=" + parkCode + "&limit=10&" + keyUrl,
+    ARTICLES: (parkCode) => baseUrl + "articles?parkCode=" + parkCode + "&limit=12&" + keyUrl,
 }

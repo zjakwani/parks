@@ -5,6 +5,7 @@ import API_URLS from "../urls"
 import Header from "../components/Header"
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
+import picture from "../images/field.jpg"
 
 
 // Page for keyword based searching
@@ -53,6 +54,9 @@ const Keyword = props => {
     return (
         <div>
             <Header title={"Search by Keyword"}/>
+            <div style={{marginBottom: "2vh"}}>
+                <img src={picture} alt="Image of mountain range" style={{height: '100%', width:"100%"}}/>
+            </div>
             <TextField
                 label="Keyword"
                 value={input}
