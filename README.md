@@ -1,70 +1,25 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A cleanly designed web app with a multitude of ways to discover and explore National Park details.
+<br/>
+<br/>
+[Deployed App](https://zjakwani.github.io/parks/)
+<br/>
+<br/>
+[Demo Video](https://drive.google.com/file/d/1LhkMcHp3JQ5-MclbC6yHSVt-Pi7l6CaP/view?usp=sharing)
+<br/>
+#
+I decided to use React to build this project. This gave me the opportunity to try using functional components. and it was a nice change of pace from the class based programming I've been doing in school with other languages. I also decided to use a UI library (MUI) which improved my styling, and also allowed me to implement a few simple animations.
+#
+For the layout of the app, I wrote a dynamically sizing header and sidebar into the page, to provide a page title and easy navigation at all times. I wanted the app to be clean but also remind users of the beauty of the outdoors, so I rendered images on each page. I also thought embedding the Twitter component into the homepage would appeal to a user and display recent updates from the NPS.  For the page navigation, I used react router, and started with a searching page. I wanted the navigation structure to take advantage of the uniformity of the park data, so I made a single park template that would display the same components, but with data corresponding to whichever park it was assigned through the router.
+![content_Screen_Shot_2021-11-14_at_9 53 57_PM](https://user-images.githubusercontent.com/66649222/190023219-f2abb520-7a88-415a-85d9-499701f36d42.png)
+When planning the functionality of the app, I started by analyzing the given API. I was able to call the parks endpoint always with a park code parameter, thus only getting a single piece of information from the endpoint each time, and avoiding the slowness of getting the entire list. I was mostly calling the API on component load using React useEffect, and then using Hooks to store the response in the application state. I think a potential future optimization for this app could be caching some of the API calls to improve efficiency.
+#
+To search from a list of activities, I first called the activities endpoint for the list and displayed it in a select box with autocomplete search. When a user selected an activity, I fed that into the nested parks endpoint to get all affiliated parks and listed them as buttons directing to their detail page  - this fulfilled deliverable 1b. Then, I decided to also implement multiple select. I added logic to merge the results of multiple API call results with AND logic, meaning that a user would only see parks that matched with every selected activity. While iterating over the multiple lists I used a hashmap for O(1) time access, rather than a nested loop, improving the time complexity of this logic from O(n^2) to O(n). 
+![content_Screen_Shot_2021-11-14_at_9 55 04_PM](https://user-images.githubusercontent.com/66649222/190023295-c68d777b-5fa3-48d8-82eb-6f90d6d10078.png)
+After the activity search, I wanted to make some extra features to provide more ways for a user to discover parks. Turning back to the API, I realized that the topics endpoint had similar structure to the activities, and repeated similar logic for that page. I also felt that it would be useful to know parks near one's location, and decided to implement searching by state by feeding a selected state code into the parks endpoint. Lastly, I implemented a keyword search, also using the parks endpoint's query parameter, by creating a textfield and submit button with React hooks. 
+#
+On the individual Park page, I fed a park code into the Webcam endpoint and mapping the results to display details and non-streaming images for each webcam. I soon realized, however, that the webcam data was sparse - many parks did not have any webcam results at all, and barely any parks had webcam images. Therefore, to make sure users could still see visuals of a park, I supplemented the webcam with a component called Gallery, which shows a slideshow of images from the parks endpoint, which was much more populated. As I added components to the park page, I kept buttons on the top to switch between the options. 
+![content_Screen_Shot_2021-11-14_at_10 01 19_PM](https://user-images.githubusercontent.com/66649222/190023348-f67a7d19-c7a3-42a3-978a-d293e615f5f7.png)
+I also felt that the general park information, including an overview and contact information, was essential, so I added that as the default component. I then completed some stretch goals by adding another two components, the first being related articles also to perhaps pique users' interest in the park's history or even other parks. Lastly, I added an embed map through Leaflet, which utilizes the free online OpenStreetMap, by passing in coordinates to set a location, which lets a user know, visually, where the park is. 
+![content_Screen_Shot_2021-11-14_at_10 02 04_PM](https://user-images.githubusercontent.com/66649222/190023400-64b4b99b-48f2-4ca4-979f-491845282561.png)
+#
+In the future, I might implement the optimizations mentioned above, along with perhaps finding a way to speed up the image rendering from local folders. I also might have explored the API even further to display interesting data from even more endpoints, and explored external APIs for more ideas. I think some interesting hypothetical functionality goals could also include searching based on user geolocation, or even going outside the API for data, perhaps through web scraping. This was a fun project!
